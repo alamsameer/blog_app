@@ -15,7 +15,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
-
+app.get("/",(req,res)=>{
+  res.send("welcome to my blogs")
+})
 app.post("/login",login)
 
 //  route to write blogs
