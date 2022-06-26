@@ -3,7 +3,6 @@ const mongoose = require("mongoose")
 const express = require("express")
 const login =require("./utils/login")
 const authenticate=require("./utils/auth")
-const bcrypt = require("bcrypt")
 const Content=require("./modal/Content")
 const app = express()
 const bodyParser=require("body-parser")
@@ -23,15 +22,16 @@ app.post("/login",login)
 //  route to write blogs
 app.post("/blogs/write",authenticate,async(req,res)=>{
    const {title,content}=req.body
- try{
-    if(title  && content){
-        let article=await Content.create({title,content})
-        res.send(article)
-       }
- }
- catch(e){
-        res.send(e)
-    }
+//  try{
+//     if(title  && content){
+//         let article=await Content.create({title,content})
+//         res.send(article)
+//        }
+//  }
+//  catch(e){
+//         res.send(e)
+//     }
+res.send( req.body)
  
 })
 //   getting list of all blogs 

@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken")
 const login = async (req, res) => {
     try {
         const { username, password } = req.query || req.body
-        if ((await  bcrypt.compare(username, process.env.writer)) && (await bcrypt.compare(password,process.env.password))) {
+        if (username === process.env.writer && password === process.env.password) {
             const token = jwt.sign({ writer:username }, process.env.secret, { expiresIn: "5h" })
             res.status(200).send(token)
         } else {
