@@ -55,7 +55,7 @@ app.get("/blogs",async (req,res)=>{
   try{
 let blogs=await Content.find({})
 // console.log(blogs);
- res.send(blogs)
+ res.json(blogs)
   }catch(e){
     res.send(e)
 }
