@@ -37,7 +37,7 @@ app.post("/blogs/write",authenticate,async(req,res)=>{
     if(title  && content){
         let article=await Content.create({Title:title,content})
         // console.log("article");
-        res.send(article)
+        res.json(article)
        }
        else{
         res.send("title and content are required")
@@ -65,9 +65,8 @@ app.post("/blogs/update",authenticate,async (req,res)=>{
     try{
        if(title&&content){
            let article=await Content.findByIdAndUpdate({_id},{content})
-           res.send(article)
+           res.json(article)
           }else{
-
             res.send(" title and content Required")
           }
     }
