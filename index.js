@@ -60,7 +60,7 @@ app.post("/blogs/update",authenticate,async (req,res)=>{
            res.send(e)
        }
   })
-const port =process.env.port ||3000
+const port =process.env.PORT ||3000
 mongoose.connect(process.env.mongo).then(() => {
     app.listen(port, () => {
         console.log("listening at port "+port);
