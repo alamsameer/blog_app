@@ -6,12 +6,13 @@ const authenticate=require("./utils/auth")
 const Content=require("./modal/Content")
 const app = express()
 const bodyParser=require("body-parser")
+const cors=require("cors")
 
 // middleware 
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
-
+app.use(cors())
 // parse application/json
 app.use(bodyParser.json())
 app.get("/",(req,res)=>{
@@ -22,16 +23,15 @@ app.post("/login",login)
 //  route to write blogs
 app.post("/blogs/write",authenticate,async(req,res)=>{
    const {title,content}=req.body
-//  try{
-//     if(title  && content){
-//         let article=await Content.create({title,content})
-//         res.send(article)
-//        }
-//  }
-//  catch(e){
-//         res.send(e)
-//     }
-res.send( req.body)
+ try{
+    if(title  && content){
+        let article=await Content.create({title,content})
+        res.send(article)
+       }
+ }
+ catch(e){
+        res.send(e)
+    }
  
 })
 //   getting list of all blogs 
